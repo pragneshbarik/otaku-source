@@ -4,6 +4,8 @@ import AnimeCard from '../AnimeCard';
 import CardContext from '../CardStates/cardContext';
 import CardState from '../CardStates/cardState';
 import { useEffect } from 'react';
+import Masonry, {ResponsiveMasonry} from "react-responsive-masonry"
+
 
 
 
@@ -27,18 +29,18 @@ export default function AnimeCardGrid() {
     
     return(
         <CardState>
-        <Grid container justifyContent="center" sx={{mt:'10%'}}>
-            <Grid item xs={12} sm={12} lg={8} >
-                <Grid  container columns={{xs:12, sm:12, md:12}}
-                    spacing={10}
-                    justifyContent="center"
-                    alignItems="center"
-                >
-                    
-                    {toRender && data.data.map(item => <Grid item xs={11} md={4}><AnimeCard title={item.title} img={item.image_url} rating={item.score} genres={item.genres}/></Grid>)}
-                    
+        <Grid container justifyContent="center" sx={{mt:'5%'}}>
+            <Grid item xs={11} sm={11} lg={10} >
+
+                    <ResponsiveMasonry
+                    columnsCountBreakPoints={{350: 1, 500: 2, 900: 4}}
+                    >
+
+                 <Masonry gutter="1rem">   
+                    {toRender && data.data.map(item => <AnimeCard title={item.title} img={item.image_url} rating={item.score} genres={item.genres}/>)}
+                    </Masonry>
+                    </ResponsiveMasonry>
                 </Grid>
-            </Grid>
         </Grid>
         </CardState>
     )

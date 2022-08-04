@@ -16,8 +16,6 @@ api = Api(app)
 
 load_dotenv(find_dotenv())
 password = urllib.parse.quote(os.environ.get("MONGO_PWD"))
-print(password)
-
 connection_string = f"mongodb+srv://pragnesh-barik:{password}@cluster0.rkh1i.mongodb.net/?retryWrites=true&w=majority"
 client = MongoClient(connection_string)
 

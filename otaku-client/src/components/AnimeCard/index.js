@@ -8,12 +8,13 @@ import Typography from '@mui/material/Typography';
 import Chip from '@mui/material/Chip';
 import Stack from '@mui/material/Stack';
 import { Box } from '@mui/system';
+import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import './index.css'
 import StarIcon from '@mui/icons-material/Star';
 
 import CardContext from '../CardStates/cardContext';
-import { Rating } from '@mui/material';
+import { Fab, Grid, Rating } from '@mui/material';
 
 const theme = createTheme({
   typography: {
@@ -41,7 +42,7 @@ export default function AnimeCard(props) {
 
   return (
     <ThemeProvider theme={theme}>
-    <Card sx={{ width: '100%', bgcolor:"#2E0249", color:"white"}}>
+    <Card variant="outlined" sx={{ width: '100%', bgcolor:"#121212", color:"white"}}>
       <CardMedia
         component="img"
         height="400"
@@ -49,16 +50,24 @@ export default function AnimeCard(props) {
         alt="green iguana"
       />
       <CardContent >
-        <Typography gutterBottom variant="h5" component="div" sx={{m:'5px'}}>
+        <Grid container
+        justifyContent="space-between">
+          <Grid item xs={9}>
+        <Typography gutterBottom variant="h6" component="div" sx={{m:'5px', fontWeight:"200"}}>
           {props.title}
         </Typography>
-        <Rating name="half-rating-read" defaultValue={(props.rating)/2} precision={0.1} emptyIcon={<StarIcon style={{ opacity: 0.8 }} fontSize="inherit" />} readOnly />
+        </Grid>
+        <Grid item xs={2}>
+        <Fab color="primary" sx={{bgcolor:"#1E1E1E"}} size="medium"><PlayArrowIcon sx={{fontSize:"1.5rem", color:"white", opacity:0.5}} /></Fab>
+        </Grid>
+        </Grid>
+        <Rating size="small" name="half-rating-read" defaultValue={(props.rating)/2} precision={0.1} emptyIcon={<StarIcon style={{ color:'#2E2E1E', opacity: 1}}  fontSize="inherit" />} readOnly />
         <Box sx={{color:"white", mt:'30px'}}>
-          {props.genres.map((genre)=><Chip label={genre} sx={{mt:'6px', ml:'5px', bgcolor:'#570A57', color:"white"}}/>)}
+          {props.genres.map((genre)=><Chip label={genre} sx={{mt:'6px', fontWeight:'200', ml:'5px', bgcolor:'#1E1E1E', color:"white"}}/>)}
       </Box>
       </CardContent>
       <CardActions>
-        <Button sx={{ml:'auto'}}><Typography sx={{fontWeight:600}}>Trailer</Typography></Button>
+        
       </CardActions>
     </Card>
     </ThemeProvider>

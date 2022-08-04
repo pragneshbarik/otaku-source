@@ -12,7 +12,7 @@ import bg9 from './images/bg9.jpg'
 import bg11 from './images/bg11.jpg'
 import bg12 from './images/bg12.jpg'
 import bg13 from './images/bg13.jpg'
-
+import KeyboardDoubleArrowDownIcon from '@mui/icons-material/KeyboardDoubleArrowDown';
 import { Box } from '@mui/system';
 import Paper from '@mui/material/Paper';
 import AnimeCard from './components/AnimeCard';
@@ -21,6 +21,7 @@ import { Typography } from '@mui/material';
 import Counter from './components/Counter';
 import { useEffect, useState } from 'react';
 import CardState from './components/CardStates/cardState';
+import Footer from './components/Footer';
 
 
 function App() {
@@ -48,12 +49,16 @@ function App() {
     <Counter />
     <Box sx={{mt:'50px'}}>
     <Search />
+    <Box sx={{color:'white', textAlign:"center", mt:'20vh' }}>
+    <KeyboardDoubleArrowDownIcon sx={{fontSize:"4rem", opacity:"0.3"}} />
+    </Box>
     </Box>
     </div>
     <div style={{backgroundColor:'black'}}>
     <Typography variant='h4' sx={{color:'white', textAlign:"center", fontFamily:"Poppins", mt:'0%'}}>Recommendations</Typography>
     <AnimeCardGrid />
     </div>
+    <Footer />
     </CardState>
     </>
   );

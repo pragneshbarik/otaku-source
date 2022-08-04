@@ -18,7 +18,7 @@ const StyledAutocomplete = styled(Autocomplete)({
   "& .MuiAutocomplete-inputRoot": {
     fontSize: "1.3rem",
     color: "white",
-    backgroundColor: "rgba(26,24,38, 0.4)",
+    backgroundColor: "rgba(26,24,38, 0.8)",
     opacity:"1",
     borderRadius:"10px",
     // This matches the specificity of the default styles at https://github.com/mui-org/material-ui/blob/v4.11.3/packages/material-ui-lab/src/Autocomplete/Autocomplete.js#L90
@@ -54,7 +54,7 @@ export default function Search() {
   function initateSearch (event, value) {
     const uid=value.split('/')[1]
     console.log(uid)
-    const fetch_url = "http://127.0.0.1:5000/rec/" + uid + "/15"
+    const fetch_url = "http://127.0.0.1:5000/rec/" + uid + "/20"
     console.log(fetch_url)
     axios.get(fetch_url).then((res)=>{updateData(res)})
     console.log(data)

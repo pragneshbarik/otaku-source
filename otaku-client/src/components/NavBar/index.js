@@ -8,6 +8,7 @@ import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import './index.css'
+import { Link } from '@mui/material';
 
 const theme = createTheme({
   typography: {
@@ -43,8 +44,11 @@ export default function NavBar() {
             otaku
           </Typography>
           <Box sx={{display : {xs:'none', sm:'block'}}}>
-          <Button color="inherit">API Reference</Button>
-          <Button color="inherit">Code</Button>
+          <Link color="inherit" underline="none" target="blank" href="https://www.github.com"><Button color="inherit">Code</Button></Link>
+          <Link color="inherit" underline="none" target="blank" href="https://barik.super.site/projects/otaku"><Button color="inherit">Docs</Button></Link>
+          <Link color="inherit" underline="none" target="blank" href="https://barik.super.site"><Button color="inherit">Creator</Button></Link>
+          
+          
           </Box>
         </Toolbar>
       </AppBar>

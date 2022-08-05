@@ -47,14 +47,17 @@ export default function Search() {
   
   useEffect(()=>{
     console.log(src)
-    const fetch_url = 'http://127.0.0.1:5000/search/' + src
+    const fetch_url = 'https://otaku-backend.herokuapp.com/search/' + src
+    // const fetch_url = 'http://localhost:5000/search/' + src
     axios.get(fetch_url).then((res)=>(setTitles(res.data))).catch((e)=>(console.log(e)))
   }, [src])
 
   function initateSearch (event, value) {
     const uid=value.split('/')[1]
     console.log(uid)
-    const fetch_url = "http://127.0.0.1:5000/rec/" + uid + "/20"
+
+    // const fetch_url = "http://localhost:5000/rec/" + uid + "/20"
+    const fetch_url = "https://otaku-backend.herokuapp.com/rec/" + uid + "/20"
     console.log(fetch_url)
     axios.get(fetch_url).then((res)=>{updateData(res)})
     console.log(data)

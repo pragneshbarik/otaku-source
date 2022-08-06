@@ -1,4 +1,4 @@
-import { Box, Grid, Typography } from "@mui/material";
+import { Box, Grid} from "@mui/material";
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import InstagramIcon from '@mui/icons-material/Instagram';
@@ -10,7 +10,13 @@ import { Link } from '@mui/material';
 export default function Footer () {
     return (
         
-        <Box sx={{bgcolor:'black', p:'40px', color:"white", fontFamily:'IBM Plex Mono'}}>
+        <Box sx={{
+            position:"relative",
+            backgroundColor:"black",
+            mb:"-100px",
+            pb:'5px', pt:'25px', 
+            color:"white", 
+            fontFamily:'IBM Plex Mono'}}>
                 <Grid container
                 justifyContent="center"
                 spacing={4}

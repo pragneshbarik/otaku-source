@@ -18,7 +18,8 @@ const StyledAutocomplete = styled(Autocomplete)({
   "& .MuiAutocomplete-inputRoot": {
     fontSize: "1.3rem",
     color: "white",
-    backgroundColor: "rgba(26,24,38, 0.8)",
+    fontFamily:"IBM Plex Mono",
+    backgroundColor: "rgba(30,27,38, 0.5)",
     opacity:"1",
     borderRadius:"10px",
     // This matches the specificity of the default styles at https://github.com/mui-org/material-ui/blob/v4.11.3/packages/material-ui-lab/src/Autocomplete/Autocomplete.js#L90
@@ -43,24 +44,20 @@ const StyledAutocomplete = styled(Autocomplete)({
 export default function Search() {
   const [src, setSrc] = useState("")
   const [titles, setTitles] = useState([])
-  const {data, updateData} = useContext(CardContext)
+  const updateData = useContext(CardContext).updateData
   
   useEffect(()=>{
-    console.log(src)
     const fetch_url = 'https://otaku-backend.herokuapp.com/search/' + src
     // const fetch_url = 'http://localhost:5000/search/' + src
     axios.get(fetch_url).then((res)=>(setTitles(res.data))).catch((e)=>(console.log(e)))
   }, [src])
 
   function initateSearch (event, value) {
-    const uid=value.split('/')[1]
-    console.log(uid)
+    const uid=value.split(':')[0]
 
     // const fetch_url = "http://localhost:5000/rec/" + uid + "/20"
-    const fetch_url = "https://otaku-backend.herokuapp.com/rec/" + uid + "/20"
-    console.log(fetch_url)
+    const fetch_url = "https://otaku-backend.herokuapp.com/rec/" + uid + "/52"
     axios.get(fetch_url).then((res)=>{updateData(res)})
-    console.log(data)
   }
 
   function handleChange(event, value) {
@@ -74,7 +71,7 @@ export default function Search() {
       <StyledAutocomplete
         id="search-box"
         freeSolo
-        options={titles.map((option) => option.title +' /'+ option.uid)}
+        options={titles.map((option) => option.uid + ": " + option.title)}
         renderInput={(params) => <TextField {...params} placeholder="Search Titles" sx={{fontFamily:"Poppins"}}/>}
         onChange={initateSearch}
         onInputChange={handleChange}

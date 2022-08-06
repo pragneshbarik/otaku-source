@@ -10,7 +10,7 @@ import Masonry, {ResponsiveMasonry} from "react-responsive-masonry"
 
 
 export default function AnimeCardGrid() {
-    const{data, updateData} = useContext(CardContext)
+    const data = useContext(CardContext).data
     const [toRender, setToRender] = useState(0)
 
     useEffect(()=>{
@@ -37,7 +37,7 @@ export default function AnimeCardGrid() {
                     >
 
                  <Masonry gutter="1rem">   
-                    {toRender && data.data.map(item => <AnimeCard title={item.title} img={item.image_url} rating={item.score} genres={item.genres}/>)}
+                    {toRender && data.data.map(item => <AnimeCard key={item.uid} title={item.title} img={item.img_url} rating={item.score} members={item.members} genres={item.genre} synopsis={item.synopsis}/>)}
                     </Masonry>
                     </ResponsiveMasonry>
                 </Grid>

@@ -44,7 +44,7 @@ export default function NavBar() {
             otaku
           </Typography>
           <Box sx={{display : {xs:'none', sm:'block'}}}>
-          <Link color="inherit" underline="none" target="blank" href="https://www.github.com"><Button color="inherit">Code</Button></Link>
+          <Link color="inherit" underline="none" target="blank" href="https://github.com/pragneshbarik/otaku-source"><Button color="inherit">Code</Button></Link>
           <Link color="inherit" underline="none" target="blank" href="https://barik.super.site/projects/otaku"><Button color="inherit">Docs</Button></Link>
           <Link color="inherit" underline="none" target="blank" href="https://barik.super.site"><Button color="inherit">Creator</Button></Link>
           
